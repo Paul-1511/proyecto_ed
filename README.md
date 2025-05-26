@@ -49,7 +49,9 @@ proyecto_ed/
 - Euler
 - Heun (Euler modificado)
 - Runge-Kutta de 4to orden (RK4)
+  
 Cada método puede resolver:
+
 - EDOs de primer orden
 - EDOs de segundo orden
 - Sistemas 2x2
