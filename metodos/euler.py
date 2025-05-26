@@ -1,26 +1,35 @@
-def euler(f, x0, y0, h, xf):
+import numpy as np
+
+def euler(f, t0, y0, h, tf):
     """
-    Método de Euler para resolver ED de primer orden.
+    Método de Euler para resolver:
+    - EDOs de primer orden (y0 es escalar)
+    - Sistemas de EDOs (y0 es array numpy)
     
     Parámetros:
-    f  : función f(x, y)
-    x0 : valor inicial de x
-    y0 : valor inicial de y
-    h  : tamaño de paso
-    xf : valor final de x
+    f  : Función f(t, y)
+    t0 : Valor inicial de t
+    y0 : Valor(es) inicial(es) (puede ser escalar o array)
+    h  : Tamaño de paso
+    tf : Valor final de t
 
     Retorna:
-    x_vals, y_vals: listas con los valores de x e y
+    t_vals: Array de valores de t
+    y_vals: Array de soluciones (shape (n,) para EDO, (n,m) para sistema m-dimensional)
     """
-    x_vals = [x0]
-    y_vals = [y0]
-
-    while x_vals[-1] < xf:
-        x = x_vals[-1]
-        y = y_vals[-1]
-        x_next = x + h
-        y_next = y + h * f(x, y)
-        x_vals.append(x_next)
-        y_vals.append(y_next)
-
-    return x_vals, y_vals
+    t_vals = np.arange(t0, tf + h, h)
+    n = len(t_vals)
+    
+    if np.isscalar(y0):
+        y_vals = np.zeros(n)
+        y_vals[0] = y0
+        for i in range(n-1):
+            y_vals[i+1] = y_vals[i] + h * f(t_vals[i], y_vals[i])
+    else:
+        m = len(y0)
+        y_vals = np.zeros((n, m))
+        y_vals[0] = y0
+        for i in range(n-1):
+            y_vals[i+1] = y_vals[i] + h * f(t_vals[i], y_vals[i])
+    
+    return t_vals, y_vals
