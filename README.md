@@ -2,7 +2,9 @@
 **Simulación Numérica de Ecuaciones Diferenciales Ordinarias**
 
 Autor: Pablo Méndez, José Chavarria 
+
 Curso: Ecuaciones Diferenciales I  
+
 Ciclo: Primer ciclo 2025  
 
 ---
