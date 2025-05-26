@@ -57,9 +57,14 @@ Cada método puede resolver:
 - Sistemas 2x2
 
 ## Ejecución del proyecto
-Clona este repositorio
+Clona este repositorio en cmd o powershell
 ``` bash
 git clone https://github.com/Paul-1511/proyecto_ed.git
+```
+
+Ve a la carpeta
+``` bash
+cd proyecto_ed
 ```
 
 Instala las librerias y dependencias necesarias
