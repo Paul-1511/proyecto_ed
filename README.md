@@ -84,9 +84,9 @@ Las gráficas se guardarán en la carpeta `resultados/` al ejecutar el programa.
 ## Objetivo de aprendizaje
 Este proyecto busca reforzar los siguientes temas:
 
--Implementación práctica de métodos numéricos iterativos.
--Comparación de precisión y error entre distintos algoritmos.
--Relación entre soluciones analíticas y numéricas.
+- Implementación práctica de métodos numéricos iterativos.
+- Comparación de precisión y error entre distintos algoritmos.
+- Relación entre soluciones analíticas y numéricas.
 
 ## Referencias 
 
