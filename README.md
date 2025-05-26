@@ -88,5 +88,5 @@ Este proyecto busca reforzar los siguientes temas:
 
 ## Referencias 
 
--Boyce, W. E., & DiPrima, R. C. (2017). Ecuaciones diferenciales y problemas con valores en la frontera. Wiley.
--Burden, R. L., & Faires, J. D. (2010). Análisis numérico. Cengage Learning.
+- Boyce, W. E., & DiPrima, R. C. (2017). Ecuaciones diferenciales y problemas con valores en la frontera. Wiley.
+- Burden, R. L., & Faires, J. D. (2010). Análisis numérico. Cengage Learning.
