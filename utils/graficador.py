@@ -1,17 +1,19 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import os
+import re
+
+def sanitize_filename(filename):
+    """Convierte un string en un nombre de archivo válido"""
+    # Reemplaza caracteres problemáticos con guiones bajos
+    filename = re.sub(r'[\\/*?:"<>|\n=]', "_", filename)
+    # Reemplaza múltiples espacios o guiones bajos con uno solo
+    filename = re.sub(r'[\s_]+', '_', filename)
+    return filename.strip('_')
 
 def graficar_soluciones(x_vals, y_numerica, y_analitica, metodo_nombre="", guardar=False):
     """
     Compara la solución numérica y la analítica graficándolas juntas.
-    
-    Parámetros:
-    - x_vals: lista de valores de x
-    - y_numerica: lista de resultados del método numérico
-    - y_analitica: lista o array de solución analítica
-    - metodo_nombre: nombre del método numérico
-    - guardar: si True, guarda la gráfica en resultados/
     """
     plt.figure(figsize=(10, 6))
     plt.plot(x_vals, y_numerica, 'b-', label=f"{metodo_nombre} (numérica)")
@@ -25,7 +27,9 @@ def graficar_soluciones(x_vals, y_numerica, y_analitica, metodo_nombre="", guard
     if guardar:
         if not os.path.exists('resultados'):
             os.makedirs('resultados')
-        filename = f"resultados/comparacion_{metodo_nombre.lower().replace(' ', '_')}.png"
+        # Sanitizar el nombre del método para el nombre de archivo
+        safe_name = sanitize_filename(metodo_nombre)
+        filename = f"resultados/comparacion_{safe_name}.png"
         plt.savefig(filename)
         print(f"Gráfica guardada como {filename}")
     
@@ -34,12 +38,6 @@ def graficar_soluciones(x_vals, y_numerica, y_analitica, metodo_nombre="", guard
 def graficar_error(x_vals, error, metodo_nombre="", guardar=False):
     """
     Grafica el error absoluto de la solución numérica.
-    
-    Parámetros:
-    - x_vals: lista de valores de x
-    - error: lista de errores absolutos
-    - metodo_nombre: nombre del método numérico
-    - guardar: si True, guarda la gráfica en resultados/
     """
     plt.figure(figsize=(10, 6))
     plt.plot(x_vals, error, 'g-', label=f"Error absoluto ({metodo_nombre})")
@@ -52,7 +50,9 @@ def graficar_error(x_vals, error, metodo_nombre="", guardar=False):
     if guardar:
         if not os.path.exists('resultados'):
             os.makedirs('resultados')
-        filename = f"resultados/error_{metodo_nombre.lower().replace(' ', '_')}.png"
+        # Sanitizar el nombre del método para el nombre de archivo
+        safe_name = sanitize_filename(metodo_nombre)
+        filename = f"resultados/error_{safe_name}.png"
         plt.savefig(filename)
         print(f"Gráfica de error guardada como {filename}")
     
